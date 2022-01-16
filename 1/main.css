@@ -1,18 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
 
+
 :root {
     font-family: 'Roboto', sans-serif;
     --main-bg-color: #9bff82;
     --main-fg-color: #ff829b;
+    --content-side-pad: min(256px, calc(10vw));
+    --logo-font-size: 48px;
+    --large-font-size: 32px;
+    --medium-font-size: 24px;
+    --font-size: 16px;
 }
 
 html, body {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
+	font-size: var(--font-size);
 	font: inherit;
 	vertical-align: baseline;
+    text-overflow: clip;
+}
+
+h1 {
+    font-size: var(--large-font-size);
+}
+h2 {
+    font-size: var(--medium-font-size);
+}
+p, span, div {
+    font-size: var(--font-size);
 }
 
 body {
@@ -31,14 +48,14 @@ header {
     background-color: var(--main-bg-color);
     margin: 0;
     border: 0;
-    padding: 0px 256px 0px 256px;
+    padding: 0px var(--content-side-pad) 0px var(--content-side-pad);
     border-radius: 0px 0px 16px 16px;
     box-shadow: 0px -16px 32px #444444;
 }
 
 header .logo {
     grid-area: logo;
-    font-size: 48px;
+    font-size: var(--logo-font-size);
 }
 
 #menu {
@@ -49,8 +66,8 @@ header .logo {
     display: grid;
     justify-items: center;
     align-items: center;
-    grid-template-columns: max-content repeat(3, max-content);
-    column-gap: 64px;
+    grid-template-columns: repeat(4, max-content);
+    column-gap: min(64px, 5vw);
 }
 
 #menu > * {
@@ -60,7 +77,7 @@ header .logo {
 
 #menu a {
     color: var(--main-fg-color);
-    font-size: 32px;
+    font-size: var(--large-font-size);
 }
 
 .logo {
@@ -91,8 +108,9 @@ main {
     grid-area: main;
     display: grid;
     grid-template-rows: repeat(7, min-content);
+    grid-template-columns: 1fr;
 
-    padding: 0px 256px 0px 256px;
+    padding: 0px var(--content-side-pad) 0px var(--content-side-pad);
 }
 
 footer {
@@ -133,4 +151,42 @@ button {
 button:hover {
     transform: scale(1.05) translateX(-4px) translateY(-4px);
     box-shadow: #444444 3px 3px 4px;
+}
+
+@media only screen and (max-width: 1024px) {
+    :root {
+        --content-side-pad: 10px;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+    :root {
+        font-family: 'Roboto', sans-serif;
+        --main-bg-color: #9bff82;
+        --main-fg-color: #ff829b;
+        --content-side-pad: 10px;
+        --logo-font-size: 24px;
+        --large-font-size: 24px;
+        --medium-font-size: 16px;
+        --font-size: 14px;
+    }
+
+    body {
+        grid-template-rows: min-content auto 80px;
+    }
+
+    main {
+        display: block;
+    }
+
+    #menu {
+        margin: 0;
+        padding: 0;
+    
+        display: grid;
+        justify-items: left;
+        align-items: center;
+        grid-template-columns: auto;
+        row-gap: 5px;
+    }
 }
