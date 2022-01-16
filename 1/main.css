@@ -36,6 +36,7 @@ body {
     min-height: 100vh;
     display: grid;
     grid-template-rows: 80px auto 80px;
+    grid-template-columns: 1fr;
     grid-template-areas: 
         "header"
         "main"
@@ -71,7 +72,6 @@ header .logo {
 }
 
 #menu > * {
-    grid-column: auto;
     display: inline;
 }
 
@@ -95,13 +95,10 @@ header .logo {
 .cards-3 .card-heading {
     font-weight: bold;
     grid-row: 1;
-    grid-column: auto;
 }
 
 .cards-3 .card-content {
-    max-width: 240px;
     grid-row: 2;
-    grid-column: auto;
 }
 
 main {
@@ -175,8 +172,18 @@ button:hover {
         grid-template-rows: min-content auto 80px;
     }
 
-    main {
-        display: block;
+    .cards-3 {
+        grid-template-columns: 1fr;
+    }
+    
+    .cards-3 .card-heading {
+        grid-row: auto;
+        grid-column: 1;
+    }
+    
+    .cards-3 .card-content {
+        grid-row: auto;
+        grid-column: 1;
     }
 
     #menu {
