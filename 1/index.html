@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/63a5cbf51e.js" crossorigin="anonymous"></script>
+    <script type="module" src="main.js"></script>
+</head>
+
+<body>
+    <header>
+        <ul id="menu">
+            <li id="menu-logo">
+                <span class="logo">
+                    GreätShöppe+<i class="fas fa-shopping-basket"></i>
+                </span>
+            </li>
+            <li id="menu-home"><a href="#home">Home</a></li>
+            <li id="menu-map"><a href="#map">Map</a></li>
+            <li id="menu-aboutus"><a href="#about-us">About us</a></li>
+        </ul>
+    </header>
+    <main>
+        <div>
+            <h1>
+                Welcome to
+                <span class="logo">
+                    GreätShöppe+<i class="fas fa-shopping-basket"></i>
+                </span></i>
+                !
+            </h1>
+            <p>
+                We at
+                <span class="logo">
+                    GreätShöppe+<i class="fas fa-shopping-basket"></i>
+                </span>
+                strive to provide the greatest products at (almost) no cost to the human race!
+                </i>
+            </p>
+        </div>
+        <h2>Here are some facts! <button id="hide-facts-button"></button></h2>
+        <div class="cards-3" hidable-by="hide-facts-button">
+            <p class="card-heading">Abductionless Technology</p>
+            <p class="card-content">
+                We do not abduct farm animals to create our products and provide you our services.
+            </p>
+            <p class="card-heading">Climate Negative</p>
+            <p class="card-content">
+                We emit extra CO<sub>2</sub> to keep earth nice and toasty for your enjoyment!
+            </p>
+            <p class="card-heading">Intergalactic Megacorporation</p>
+            <p class="card-content">
+                We are one of the largest intergalactic megacorporations, so you can be sure we can provide what you
+                need at the lowest of prices!
+            </p>
+        </div>
+        <h2>Here are our latest ventures! <button id="hide-ventures-button"></button></h2>
+        <div class="cards-3" hidable-by="hide-ventures-button">
+            <p class="card-heading">Company Airtrip</p>
+            <img class="card-content" height="200px"
+                src="https://cdn.mos.cms.futurecdn.net/BkkE7SUqhdBQWGMRscuzkQ-1024-80.jpg.webp" alt="UFOs flying!">
+            <p class="card-heading">Nevadian Exploration</p>
+            <img class="card-content" height="200px"
+                src="https://www.irishtimes.com/polopoly_fs/1.4579958.1622467446!/image/image.jpg_gen/derivatives/box_620_330/image.jpg"
+                alt="More UFOs!">
+            <p class="card-heading">Loving Employees</p>
+            <img class="card-content" height="200px"
+                src="https://as1.ftcdn.net/v2/jpg/03/10/47/32/1000_F_310473245_q0B5wjZmg7bemndAefjgGFbEOL3GFECv.jpg"
+                alt="Our employees">
+        </div>
+        <div>
+            <h2>Become an employee?</h2>
+            <p>Click the button below 2<sup>10</sup> times, and we <b>will</b> automatically employ you!</p>
+            <button id="employment-button">Let's go!</button>
+            <span id="employment-button-text">You have clicked the button {employmentButtonClicks} times.</span>
+        </div>
+        <div>
+            <h2>Keywords from JS</h2>
+            <ul id="keywords"></ul>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <span class="logo">
+                GreätShöppe+<i class="fas fa-shopping-basket"></i>
+            </span>! We're watching.
+        </div>
+    </footer>
+</body>
+
+</html>
