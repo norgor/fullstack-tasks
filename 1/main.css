@@ -45,8 +45,7 @@ body {
 
 header {
     grid-area: header;
-
-    background-color: var(--main-bg-color);
+    background-image: linear-gradient(to right, white, var(--main-bg-color), white);
     margin: 0;
     border: 0;
     padding: 0px var(--content-side-pad) 0px var(--content-side-pad);
@@ -111,6 +110,7 @@ main {
 }
 
 footer {
+    background-color: #efefef;
     grid-area: footer;
     display: grid;
     grid-template-columns: auto max-content auto;
