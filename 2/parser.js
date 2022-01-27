@@ -1,18 +1,14 @@
-const operators = {};
+const tokens = new Set();
+const operators = new Map();
 
-function registerOperator(operator) {
-    operators[operator.token] = operator;
+function registerTokens(toks) {
+    toks.forEach((x) => tokens.add(x));
 }
 
-function registerBinaryOperator(token, func) {
-    registerOperator(new BinaryOperator(token, func));
+function registerOperators(ops) {
+    registerTokens(ops.map(x => x.token));
+    ops.forEach(x => operators.set(x.token, x));
 }
-
-registerBinaryOperator('^', (lhs, rhs) => Math.pow(lhs, rhs));
-registerBinaryOperator('*', (lhs, rhs) => lhs * rhs);
-registerBinaryOperator('/', (lhs, rhs) => lhs / rhs);
-registerBinaryOperator('+', (lhs, rhs) => lhs + rhs);
-registerBinaryOperator('-', (lhs, rhs) => lhs - rhs);
 
 class Operator {
     constructor(token) {
@@ -62,8 +58,8 @@ function isWhitespace(char) {
     return chars.has(char);
 }
 
-function nextCharIndex(str, start) {
-    for (let i = start; i < str.length; i++) {
+function nextCharIndex(str, startIndex) {
+    for (let i = startIndex; i < str.length; i++) {
         if (!isWhitespace(str[i])) {
             return i;
         }
@@ -71,14 +67,31 @@ function nextCharIndex(str, start) {
     return str.length;
 }
 
+function lookupToken(str, startIndex) {
+    for (let token of tokens.keys()) {
+        console.log(token);
+        if (str.substring(startIndex, startIndex + token.length) == token) {
+            return startIndex + token.length;
+        }
+    }
+    return -1;
+}
+
 function tokenize(str) {
     let tokens = [];
     let token = "";
     for (let i = 0; i < str.length;) {
-        const c = str[i];
         const isNumber = isNumberChar(str[i]);
-        const next = nextCharIndex(str, i + 1);
-        token += str[i];
+        let next;
+        if (!isNumber) {
+            next = lookupToken(str, i);
+            if (next == -1) {
+                throw new Error(`Could not find token matching from column ${i}: ${str.substring(i)} `);
+            }
+        } else {
+            next = nextCharIndex(str, i + 1);
+        }
+        token += str.substring(i, next);
         if (isNumber != isNumberChar(str[next])) {
             tokens.push(isNumber ? parseFloat(token) : token);
             token = "";
@@ -90,4 +103,13 @@ function tokenize(str) {
 
 function parse(str) {
     const tokens = tokenize(str);
+
 }
+registerTokens(['(', ')']);
+registerOperators([
+    new BinaryOperator('^', Math.pow),
+    new BinaryOperator('*', (lhs, rhs) => lhs * rhs),
+    new BinaryOperator('/', (lhs, rhs) => lhs / rhs),
+    new BinaryOperator('+', (lhs, rhs) => lhs + rhs),
+    new BinaryOperator('-', (lhs, rhs) => lhs - rhs),
+]);
