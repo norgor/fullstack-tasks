@@ -1,0 +1,71 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: auto 3fr auto;
+}
+
+.calculator {
+    grid-row: 1;
+    grid-column: 2;
+    background-color: #DDD;
+    border-radius: 40px;
+    display: grid;
+    padding: 40px;
+    grid-template-rows: auto max-content;
+    grid-template-columns: none;
+    row-gap: 8px;
+}
+
+.calculator>.input {
+    word-wrap: normal;
+    font-size: 20px;
+    padding: 16px;
+    background-color: #333;
+    color: white;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    min-height: 0px;
+    max-height: 100%;
+}
+
+.calculator>.input, .calculator>.input * {
+    word-break: break-all;
+}
+
+.calculator>.buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    row-gap: 5px;
+    column-gap: 5px;
+}
+
+.calculator>.buttons>button {
+    background-color: grey;
+    color:white;
+    font-size: 16px;
+    padding: 6px;
+    border: 0;
+    border-radius: 8px;
+}
+
+.calculator>.buttons>button:hover {
+    background-color: rgb(95, 78, 243);
+}
+
+
+:root {
+    --calc-width: 600px;
+}
+@media only screen and (min-width: 600px) {
+    body {
+        display: grid;
+        grid-template-columns: calc(50vw - (var(--calc-width)) * 0.5) 3fr calc(50vw - (var(--calc-width)) * 0.5);
+    }
+}
