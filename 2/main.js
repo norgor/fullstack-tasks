@@ -33,6 +33,7 @@ const BUTTONS = (() => {
         SUB: operation("-"),
         ANS: operation("ANS"),
 
+        _0: number(0),
         _1: number(1),
         _2: number(2),
         _3: number(3),
