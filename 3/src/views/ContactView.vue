@@ -1,10 +1,10 @@
 <template>
-  <contact-form />
+  <contact-form-component />
 </template>
 
 <script>
-import ContactForm from "@/components/ContactForm.vue";
+import ContactFormComponent from "@/components/ContactFormComponent.vue";
 export default {
-  components: { ContactForm },
+  components: { ContactFormComponent },
 };
 </script>

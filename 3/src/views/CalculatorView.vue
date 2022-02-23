@@ -1,15 +1,15 @@
 <template>
-  <calculator />
+  <calculator-component />
 </template>
 
 <script>
 // @ is an alias to /src
-import Calculator from "@/components/Calculator.vue";
+import CalculatorComponent from "@/components/CalculatorComponent.vue";
 
 export default {
-  name: "HomeView",
+  name: "CalculatorView",
   components: {
-    Calculator,
+    CalculatorComponent,
   },
 };
 </script>

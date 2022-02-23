@@ -11,9 +11,12 @@ const NICE_SUBMIT_STATUS = {
   [SUBMIT_STATUS.SENT]: "Sent!",
 }
 
-export default createStore({
+export default () => createStore({
   state() {
     return {
+      auth: {
+        username: null,
+      },
       formDetails: {
         name: "",
         email: "",
@@ -22,11 +25,17 @@ export default createStore({
     }
   },
   getters: {
+    authed(state) {
+      return state.auth.username !== null;
+    },
     contactFormSubmitNiceStatus(state) {
       return NICE_SUBMIT_STATUS[state.contactFormSubmitStatus];
     }
   },
   mutations: {
+    SET_AUTH_USERNAME(state, username) {
+      state.auth.username = username;
+    },
     SET_CONTACT_FORM_SUBMIT_STATUS(state, status) {
       state.contactFormSubmitStatus = status;
     },
@@ -46,8 +55,11 @@ export default createStore({
     },
     setFormDetails({ commit }, formDetails) {
       commit("SET_FORM_DETAILS", formDetails);
-    }
+    },
+    setAuthUsername({ commit }, username) {
+      commit("SET_AUTH_USERNAME", username);
+    },
   },
   modules: {
   }
-})
+});
